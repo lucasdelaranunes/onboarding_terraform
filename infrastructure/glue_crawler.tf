@@ -1,5 +1,5 @@
 resource "aws_glue_catalog_database" "raw" {
-  name = "dl_raw"
+  name = "onboarding-a3-"
 }
 
 resource "aws_glue_crawler" "raw" {
@@ -8,7 +8,7 @@ resource "aws_glue_crawler" "raw" {
   role          = aws_iam_role.glue_role.arn
 
   s3_target {
-    path = "s3://${aws_s3_bucket.dl.bucket}"
+    path = "s3://${aws_s3_bucket.dl.bucket}/consumer-zone"
   }
 
   tags = {

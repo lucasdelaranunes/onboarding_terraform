@@ -4,5 +4,4 @@ import os
 
 
 def test_response():
-    res = lf.handler(None, None)
-    assert res['statusCode'] == 200
+    assert lf.get_data()
