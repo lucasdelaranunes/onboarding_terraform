@@ -31,19 +31,6 @@ jobs:
       run: |
         python -m pytest
   
-
-  build_docker:
-    name: Build and test docker image
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build image
-      run: |
-        cd etl
-        docker build -t "${PWD##*/}" .
-        docker run "${PWD##*/}"
-
-
   build_dl:
     name: Build and deploy DataLake
     runs-on: ubuntu-latest

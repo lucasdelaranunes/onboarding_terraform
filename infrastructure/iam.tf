@@ -74,20 +74,14 @@ resource "aws_iam_policy" "glue_policy" {
                 "s3:PutObject",
                 "s3:DeleteObject"
             ],
-            "Resource": [
-                "arn:aws:s3:::aws-glue-*/*",
-                "arn:aws:s3:::*/*aws-glue-*/*"
-            ]
+            "Resource": "*"
         },
         {
             "Effect": "Allow",
             "Action": [
                 "s3:GetObject"
             ],
-            "Resource": [
-                "arn:aws:s3:::crawler-public*",
-                "arn:aws:s3:::aws-glue-*"
-            ]
+            "Resource": "*"
         },
         {
             "Effect": "Allow",
@@ -162,7 +156,7 @@ EOF
 resource "aws_iam_policy" "lambda" {
   name        = "AWSLambdaBasicExecutionRole"
   path        = "/"
-  description = "Provides write permissions to CloudWatch Logs."
+  description = "Provides write permissions to CloudWatch Logs ad S3 buckets."
 
   policy = <<EOF
 {
@@ -174,6 +168,13 @@ resource "aws_iam_policy" "lambda" {
                 "logs:CreateLogGroup",
                 "logs:CreateLogStream",
                 "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
             ],
             "Resource": "*"
         }

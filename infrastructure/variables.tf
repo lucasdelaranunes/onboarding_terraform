@@ -7,7 +7,7 @@ variable "base_bucket_name" {
 }
 
 variable "account" {
-  default = 123456789
+  default = 070373844410
 }
 
 variable "lambda_function_name" {
